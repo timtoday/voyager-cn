@@ -1,10 +1,9 @@
 
 ## 这是一个很好用的轮子，基于Laravel.
 ### 由于官方木有中文支持，特意翻译过来希望都用得上,不用天天造轮子
-Made with ❤️ by [The Control Group](https://www.thecontrolgroup.com) 汉化： ❤️ by [timwang](http://dbtoo.com) 
+汉化： ❤️ by [timwang](http://dbtoo.com) 
 
-![Voyager Screenshot](https://raw.githubusercontent.com/the-control-group/voyager/gh-pages/images/screenshot.png)
- 
+
 <hr>
 
 
