@@ -58,7 +58,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Admin Title',
-                'value'        => 'Voyager',
+                'value'        => '轮子',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 4,
@@ -69,7 +69,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Admin Description',
-                'value'        => 'Welcome to Voyager. The Missing Admin for Laravel',
+                'value'        => '专注 专心 专业',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 5,

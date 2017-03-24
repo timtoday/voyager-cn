@@ -54,7 +54,7 @@
 
             <div class="login-container animated fadeInRightBig">
 
-                <h2>Sign In Below:</h2>
+                <h2>请登录:</h2>
 
                 <form action="{{ route('voyager.login') }}" method="POST">
                 {{ csrf_field() }}
@@ -62,19 +62,19 @@
                   <input type="text" name="email" value="{{ old('email') }}" required>
                   <span class="highlight"></span>
                   <span class="bar"></span>
-                  <label><i class="glyphicon glyphicon-user"></i><span class="span-input"> E-mail</span></label>
+                  <label><i class="glyphicon glyphicon-user"></i><span class="span-input"> 邮件</span></label>
                 </div>
 
                 <div class="group">      
                   <input type="password" name="password" required>
                   <span class="highlight"></span>
                   <span class="bar"></span>
-                  <label><i class="glyphicon glyphicon-lock"></i><span class="span-input"> Password</span></label>
+                  <label><i class="glyphicon glyphicon-lock"></i><span class="span-input"> 密码</span></label>
                 </div>
 
                 <button type="submit" class="btn btn-block login-button">
-                    <span class="signingin hidden"><span class="glyphicon glyphicon-refresh"></span> Loggin in...</span>
-                    <span class="signin">Login</span>
+                    <span class="signingin hidden"><span class="glyphicon glyphicon-refresh"></span> 登录中...</span>
+                    <span class="signin">登录</span>
                 </button>
                
               </form>
