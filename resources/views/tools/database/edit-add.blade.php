@@ -8,9 +8,9 @@
     <h1 class="page-title">
         <i class="voyager-data"></i>
         @if($db->action == 'update')
-            {{ "Editing {$db->table->name} table" }}
+            {{ "编辑表： {$db->table->name} " }}
         @else
-            {{ 'New Table' }}
+            {{ '新建表' }}
         @endif
     </h1>
 @stop

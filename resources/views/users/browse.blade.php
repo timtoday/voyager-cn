@@ -20,12 +20,12 @@
                         <table id="dataTable" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created At</th>
-                                    <th>Avatar</th>
-                                    <th>Role</th>
-                                    <th class="actions">Actions</th>
+                                    <th>姓名</th>
+                                    <th>邮件</th>
+                                    <th>创建时间</th>
+                                    <th>头像</th>
+                                    <th>角色</th>
+                                    <th class="actions">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
