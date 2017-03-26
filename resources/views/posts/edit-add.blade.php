@@ -1,9 +1,9 @@
 @extends('voyager::master')
 
 @if(isset($dataTypeContent->id))
-    @section('page_title','Edit '.$dataType->display_name_singular)
+    @section('page_title','编辑 '.$dataType->display_name_singular)
 @else
-    @section('page_title','Add '.$dataType->display_name_singular)
+    @section('page_title','新建 '.$dataType->display_name_singular)
 @endif
 
 @section('css')
@@ -56,7 +56,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}
     </h1>
 @stop
 
@@ -75,8 +75,8 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> Post Title
-                                <span class="panel-desc"> The title for your post</span>
+                                <i class="voyager-character"></i> 标题
+                                <span class="panel-desc">帖子的主题</span>
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -90,7 +90,7 @@
                     <!-- ### CONTENT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-book"></i> Post Content</h3>
+                            <h3 class="panel-title"><i class="icon wb-book"></i> 内容</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                             </div>
@@ -101,7 +101,7 @@
                     <!-- ### EXCERPT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Excerpt <small>Small description of this post</small></h3>
+                            <h3 class="panel-title">摘要 <small>简短的说明</small></h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -115,21 +115,21 @@
                     <!-- ### DETAILS ### -->
                     <div class="panel panel panel-bordered panel-warning">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> Post Details</h3>
+                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> 详情</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="name">URL slug</label>
+                                <label for="name">URL关键词</label>
                                 <input type="text" class="form-control" id="slug" name="slug"
                                     placeholder="slug"
                                     @if(isset($dataTypeContent)){!! isFieldSlugAutoGenerator($dataTypeContent, "slug") !!}@endif
                                     value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="name">Post Status</label>
+                                <label for="name">状态</label>
                                 <select class="form-control" name="status">
                                     <option value="PUBLISHED" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PUBLISHED'){{ 'selected="selected"' }}@endif>published</option>
                                     <option value="DRAFT" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DRAFT'){{ 'selected="selected"' }}@endif>draft</option>
@@ -137,7 +137,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">Post Category</label>
+                                <label for="name">分类</label>@if (isset($dataTypeContent->category_id)){{ $dataTypeContent->category_id }}@endif
                                 <select class="form-control" name="category_id">
                                     @foreach(TCG\Voyager\Models\Category::all() as $category)
                                         <option value="{{ $category->id }}" @if(isset($dataTypeContent->category_id) && $dataTypeContent->category_id == $category->id){{ 'selected="selected"' }}@endif>{{ $category->name }}</option>
@@ -145,7 +145,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">Featured</label>
+                                <label for="name">推荐</label>
                                 <input type="checkbox" name="featured" @if(isset($dataTypeContent->featured) && $dataTypeContent->featured){{ 'checked="checked"' }}@endif>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                     <!-- ### IMAGE ### -->
                     <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-image"></i> Post Image</h3>
+                            <h3 class="panel-title"><i class="icon wb-image"></i> 图片</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -170,22 +170,22 @@
                     <!-- ### SEO CONTENT ### -->
                     <div class="panel panel-bordered panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-search"></i> SEO Content</h3>
+                            <h3 class="panel-title"><i class="icon wb-search"></i> SEO内容</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="name">Meta Description</label>
+                                <label for="name">Meta描述</label>
                                 <textarea class="form-control" name="meta_description">@if(isset($dataTypeContent->meta_description)){{ $dataTypeContent->meta_description }}@endif</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="name">Meta Keywords</label>
+                                <label for="name">Meta关键词</label>
                                 <textarea class="form-control" name="meta_keywords">@if(isset($dataTypeContent->meta_keywords)){{ $dataTypeContent->meta_keywords }}@endif</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="name">SEO Title</label>
+                                <label for="name">SEO标题</label>
                                 <input type="text" class="form-control" name="seo_title" placeholder="SEO Title" value="@if(isset($dataTypeContent->seo_title)){{ $dataTypeContent->seo_title }}@endif">
                             </div>
                         </div>
@@ -194,7 +194,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary pull-right">
-                @if(isset($dataTypeContent->id)){{ 'Update Post' }}@else<?= '<i class="icon wb-plus-circle"></i> Create New Post'; ?>@endif
+                @if(isset($dataTypeContent->id)){{ '更新' }}@else<?= '<i class="icon wb-plus-circle"></i> 保存'; ?>@endif
             </button>
         </form>
 

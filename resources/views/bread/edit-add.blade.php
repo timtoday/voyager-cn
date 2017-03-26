@@ -5,14 +5,14 @@
 @stop
 
 @if(isset($dataTypeContent->id))
-    @section('page_title','Edit '.$dataType->display_name_singular)
+    @section('page_title','编辑 '.$dataType->display_name_singular)
 @else
-    @section('page_title','Add '.$dataType->display_name_singular)
+    @section('page_title','新建 '.$dataType->display_name_singular)
 @endif
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop
@@ -25,7 +25,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'Add New' }}@endif {{ $dataType->display_name_singular }}</h3>
+                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '修改' }}@endif{{ $dataType->display_name_singular }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -75,7 +75,7 @@
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary save">Save</button>
+                            <button type="submit" class="btn btn-primary save">保存</button>
                         </div>
                     </form>
 

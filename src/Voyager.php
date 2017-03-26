@@ -186,7 +186,30 @@ class Voyager
 
         return true;
     }
+    public function Bread_crumbs($key)
+    {
 
+        
+    $cm_arr = array(
+        'Edit'=>"编辑",
+        'Create'=>"新建",
+        'Builder'=>"生成器",
+        'Settings'=>"设置",
+        'Database'=>"数据库",
+        'Profile'=>"个人资料",
+        'Media'=>'文件',
+    );
+    if(isset($cm_arr[$key]) && !empty($cm_arr[$key]))
+    {
+        return $cm_arr[$key];
+    }
+     $data_types = DataType::where('name', '=', strtolower($key))->first();
+      if (isset($data_types->display_name_singular) && !empty($data_types->display_name_singular)) {
+            return $data_types->display_name_singular;
+        }
+        return $key;
+        
+    }
     public function canOrAbort($permission, $statusCode = 403)
     {
         if (!$this->can($permission)) {
@@ -231,7 +254,7 @@ class Voyager
 
             // Loop through all the packages and get the version of voyager
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/voyager') {
+                if ($package->name == 'timtoday/voyager-cn') {
                     $this->version = $package->version;
                     break;
                 }

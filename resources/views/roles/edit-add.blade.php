@@ -6,7 +6,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}
     </h1>
 @stop
 
@@ -19,7 +19,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'Add New' }}@endif {{ $dataType->display_name_singular }}</h3>
+                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -56,8 +56,8 @@
                                 </div>
                             @endforeach
 
-                            <label for="permission">Permissions</label><br>
-                            <a href="#" class="permission-select-all">Select All</a> / <a href="#"  class="permission-deselect-all">Deselect All</a>
+                            <label for="permission">权限</label><br>
+                            <a href="#" class="permission-select-all">全选</a> / <a href="#"  class="permission-deselect-all">反选</a>
                             <ul class="permissions checkbox">
                                 <?php
                                     $role_permissions = (isset($dataTypeContent)) ? $dataTypeContent->permissions->pluck('key')->toArray() : [];
@@ -65,12 +65,18 @@
                                 @foreach(TCG\Voyager\Models\Permission::all()->groupBy('table_name') as $table => $permission)
                                     <li>
                                         <input type="checkbox" id="{{$table}}" class="permission-group">
-                                        <label for="{{$table}}"><strong>{{ucwords($table)}}</strong></label>
+                                        <label for="{{$table}}"><strong>{{ Voyager::Bread_crumbs(ucwords($table))}}</strong></label>
                                         <ul>
                                             @foreach($permission as $perm)
                                                 <li>
+                                                <?php 
+                                                $kt_arr = explode('_',$perm->key);
+                                                $kt_t = array('browse'=>'进入','read'=>'详情','edit'=>'编辑','add'=>'新建','delete'=>'删除');
+                                                $kt_t_label = $kt_t[strtolower($kt_arr[0])].Voyager::Bread_crumbs(ucwords($kt_arr[1]));
+                                                ?>
                                                     <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
-                                                    <label for="permission-{{$perm->id}}">{{title_case(str_replace('_', ' ', $perm->key))}}</label>
+                                                  <!--  <label for="permission-{{$perm->id}}">{{title_case(str_replace('_', ' ', $perm->key))}}</label> -->
+                                                    <label for="permission-{{$perm->id}}"><?php echo  $kt_t_label;?></label>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -79,7 +85,7 @@
                             </ul>
                         </div><!-- panel-body -->
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
                         </div>
                     </form>
 

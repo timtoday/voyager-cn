@@ -174,8 +174,8 @@
     <div class="container-fluid">
         @include('voyager::alerts')
         <div class="alert alert-info">
-            <strong>How To Use:</strong>
-            <p>You can get the value of each setting anywhere on your site by calling <code>Voyager::setting('key')</code></p>
+            <strong>使用方式:</strong>
+            <p>任何地方使用 <code>Voyager::setting('key')</code>来获取值</p>
         </div>
     </div>
 

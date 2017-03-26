@@ -6,7 +6,7 @@
     <h1 class="page-title">
         <i class="voyager-news"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> Add New
+            <i class="voyager-plus"></i> 新建
         </a>
     </h1>
 @stop
@@ -24,7 +24,7 @@
                                     @foreach($dataType->browseRows as $row)
                                     <th>{{ $row->display_name }}</th>
                                     @endforeach
-                                    <th class="actions">Actions</th>
+                                    <th class="actions">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,13 +41,13 @@
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}">
-                                            <i class="voyager-trash"></i> Delete
+                                            <i class="voyager-trash"></i> 删除
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> Edit
+                                            <i class="voyager-edit"></i> 编辑
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> View
+                                            <i class="voyager-eye"></i> 查看
                                         </a>
                                     </td>
                                 </tr>
@@ -56,7 +56,7 @@
                         </table>
                         @if (isset($dataType->server_side) && $dataType->server_side)
                             <div class="pull-left">
-                                <div role="status" class="show-res" aria-live="polite">Showing {{ $dataTypeContent->firstItem() }} to {{ $dataTypeContent->lastItem() }} of {{ $dataTypeContent->total() }} entries</div>
+                                <div role="status" class="show-res" aria-live="polite">显示从 {{ $dataTypeContent->firstItem() }} 至 {{ $dataTypeContent->lastItem() }} 记录，共  {{ $dataTypeContent->total() }} 条</div>
                             </div>
                             <div class="pull-right">
                                 {{ $dataTypeContent->links() }}

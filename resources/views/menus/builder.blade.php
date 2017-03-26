@@ -6,8 +6,8 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-list"></i>Menu Builder ({{ $menu->name }})
-        <div class="btn btn-success add_item"><i class="voyager-plus"></i> New Menu Item</div>
+        <i class="voyager-list"></i>目录生成器 ({{ $menu->name }})
+        <div class="btn btn-success add_item"><i class="voyager-plus"></i> 新建</div>
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop
@@ -22,8 +22,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <p class="panel-title" style="color:#777">Drag and drop the menu Items below to re-arrange
-                            them.</p>
+                        <p class="panel-title" style="color:#777">支持拖放操作</p>
                     </div>
 
                     <div class="panel-body" style="padding:30px;">
@@ -47,8 +46,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Are you sure you want to delete this menu
-                        item?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> 确定要删除当前目录吗</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}" id="delete_form"
@@ -56,9 +54,9 @@
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="Yes, Delete This Menu Item">
+                               value="确定删除当前目录">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">取消</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -71,36 +69,36 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-plus"></i> Create a New Menu Item</h4>
+                    <h4 class="modal-title"><i class="voyager-plus"></i> 新建</h4>
                 </div>
                 <form action="{{ route('voyager.menus.item.add', ['menu' => $menu->id]) }}" id="add_form" method="POST">
                     <div class="modal-body">
                         @include('voyager::multilingual.language-selector')
-                        <label for="name">Title of the Menu Item</label>
+                        <label for="name">标题</label>
                         @include('voyager::multilingual.input-hidden-menu', ['_field_name' => 'add_title', '_field_trans' => ''])
                         <input type="text" class="form-control" id="add_title" name="title" placeholder="Title"><br>
-                        <label for="url">URL for the Menu Item</label>
+                        <label for="url">地址</label>
                         <input type="text" class="form-control" name="url" placeholder="URL"><br>
-                        <label for="icon_class">Font Icon class for the Menu Item (Use a <a
+                        <label for="icon_class">图标 (Use a <a
                                     href="{{ config('voyager.assets_path') . '/fonts/voyager/icons-reference.html' }}"
                                     target="_blank">Voyager Font Class</a>)</label>
                         <input type="text" class="form-control" name="icon_class"
                                placeholder="Icon Class (optional)"><br>
-                        <label for="color">Color in RGB or hex (optional)</label>
+                        <label for="color">颜色 (选填)</label>
                         <input type="color" class="form-control" name="color"
                                placeholder="Color (ex. #ffffff or rgb(255, 255, 255)"><br>
-                        <label for="target">Open In</label>
+                        <label for="target">打开方式</label>
                         <select id="edit_target" class="form-control" name="target">
-                            <option value="_self">Same Tab/Window</option>
-                            <option value="_blank">New Tab/Window</option>
+                            <option value="_self">当前窗口</option>
+                            <option value="_blank">新建窗口</option>
                         </select>
                         <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                     </div>
                     {{ csrf_field() }}
 
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="Add New Item">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="新建">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">取消</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -113,50 +111,50 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-edit"></i> Edit Menu Item</h4>
+                    <h4 class="modal-title"><i class="voyager-edit"></i> 编辑目录</h4>
                 </div>
                 <form action="{{ route('voyager.menus.item.update', ['menu' => $menu->id]) }}" id="edit_form" method="POST">
                     {{ method_field("PUT") }}
                     {{ csrf_field() }}
                     <div class="modal-body">
                         @include('voyager::multilingual.language-selector')
-                        <label for="name">Title of the Menu Item</label>
+                        <label for="name">标题</label>
                         @include('voyager::multilingual.input-hidden-menu', ['_field_name' => 'edit_title', '_field_trans' => ''])
                         <input type="text" class="form-control" id="edit_title" name="title" placeholder="Title"><br>
-                        <label for="type">Link type</label>
+                        <label for="type">链接类型</label>
                         <select id="edit_type" class="form-control" name="type">
-                            <option value="url" selected="selected">Static URL</option>
-                            <option value="route">Dynamic Route</option>
+                            <option value="url" selected="selected">静态URL</option>
+                            <option value="route">动态路由</option>
                         </select><br>
                         <div id="url_type">
-                            <label for="url">URL for the Menu Item</label>
+                            <label for="url">URL地址</label>
                             <input type="text" class="form-control" id="edit_url" name="url" placeholder="URL"><br>
                         </div>
                         <div id="route_type">
-                            <label for="route">Route for the menu item</label>
+                            <label for="route">路由</label>
                             <input type="text" class="form-control" id="edit_route" name="route" placeholder="Route"><br>
-                            <label for="parameters">Route parameters (if any)</label>
+                            <label for="parameters">路由参数 (如果有)</label>
                             <textarea rows="3" class="form-control" id="edit_parameters" name="parameters" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea><br>
                         </div>
-                        <label for="icon_class">Font Icon class for the Menu Item (Use a <a
+                        <label for="icon_class">图标 (Use a <a
                                     href="{{ config('voyager.assets_path') . '/fonts/voyager/icons-reference.html' }}"
                                     target="_blank">Voyager Font Class</a>)</label>
                         <input type="text" class="form-control" id="edit_icon_class" name="icon_class"
                                placeholder="Icon Class (optional)"><br>
-                        <label for="color">Color in RGB or hex (optional)</label>
+                        <label for="color">颜色 (选填)</label>
                         <input type="color" class="form-control" id="edit_color" name="color"
                                placeholder="Color (ex. #ffffff or rgb(255, 255, 255)"><br>
-                        <label for="target">Open In</label>
+                        <label for="target">打开方式</label>
                         <select id="edit_target" class="form-control" name="target">
-                            <option value="_self" selected="selected">Same Tab/Window</option>
-                            <option value="_blank">New Tab/Window</option>
+                             <option value="_self">当前窗口</option>
+                            <option value="_blank">新建窗口</option>
                         </select>
                         <input type="hidden" name="id" id="edit_id" value="">
                     </div>
 
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="Update">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="保存">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">取消</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->

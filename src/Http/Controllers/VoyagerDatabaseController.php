@@ -294,11 +294,10 @@ class VoyagerDatabaseController extends Controller
     public function updateBread(Request $request, $id)
     {
         Voyager::canOrFail('browse_database');
-
         /* @var \TCG\Voyager\Models\DataType $dataType */
         try {
             $dataType = Voyager::model('DataType')->find($id);
-
+            
             $data = $dataType->updateDataType($request->all(), true)
                 ? $this->alertSuccess("Successfully updated the {$dataType->name} BREAD")
                 : $this->alertError('Sorry it appears there may have been a problem updating this BREAD');

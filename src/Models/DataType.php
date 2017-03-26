@@ -67,9 +67,11 @@ class DataType extends Model
 
     public function updateDataType($requestData, $throw = false)
     {
+        $requestData['generate_permissions'] = isset($requestData['generate_permissions']) ? $requestData['generate_permissions'] : 0;
+        $requestData['server_side'] = isset($requestData['server_side']) ? $requestData['server_side'] : 0;
+
         try {
             DB::beginTransaction();
-
             if ($this->fill($requestData)->save()) {
                 $fields = $this->fields(array_get($requestData, 'name'));
 

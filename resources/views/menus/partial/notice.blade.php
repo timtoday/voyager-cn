@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="alert alert-info">
-        <strong>How To Use:</strong>
-        <p>You can output {{ !empty($menu) ? 'this' : 'a' }} menu anywhere on your site by calling <code>menu('{{ !empty($menu) ? $menu->name : 'name' }}')</code></p>
+        <strong>如何使用:</strong>
+        <p>在需要显示目录的地方使用 <code>menu('{{ !empty($menu) ? $menu->name : 'name' }}')</code>调用显示</p>
     </div>
 </div>

@@ -2,7 +2,7 @@
 
 @section('page_header')
     <div class="page-title">
-        <i class="voyager-data"></i> @if(isset($dataType->id)){{ 'Edit BREAD for ' . $dataType->name . ' table' }}@elseif(isset($table)){{ 'Create BREAD for ' . $table . ' table' }}@endif
+        <i class="voyager-data"></i> @if(isset($dataType->id)){{ '编辑表：' . $dataType->name . ' 的BREAD' }}@elseif(isset($table)){{ '创建表： ' . $table . ' 的BREAD' }}@endif
     </div>
 @stop
 
@@ -28,18 +28,18 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Edit the rows for the {{ $table }} table below:</h3>
+                            <h3 class="panel-title">编辑表： {{ $table }} 的字段:</h3>
                         </div>
 
                         <table id="users" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Field</th>
-                                    <th>Field Info</th>
-                                    <th>Visibility</th>
-                                    <th>Input Type</th>
-                                    <th>Display Name</th>
-                                    <th>Optional Details</th>
+                                    <th>字段</th>
+                                    <th>类型</th>
+                                    <th>可见位置</th>
+                                    <th>输入类型</th>
+                                    <th>显示标签</th>
+                                    <th>选项</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,23 +75,23 @@
                                                @elseif(!isset($dataRow->browse))
                                                     {{ 'checked="checked"' }}
                                                @endif>
-                                        <label for="field_browse_{{ $data['field'] }}">Browse</label><br/>
+                                        <label for="field_browse_{{ $data['field'] }}">B列表页</label><br/>
                                         <input type="checkbox"
                                                id="field_read_{{ $data['field'] }}"
                                                name="field_read_{{ $data['field'] }}" @if(isset($dataRow->read) && $dataRow->read){{ 'checked="checked"' }}@elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->read)){{ 'checked="checked"' }}@endif>
-                                        <label for="field_read_{{ $data['field'] }}">Read</label><br/>
+                                        <label for="field_read_{{ $data['field'] }}">R详情页</label><br/>
                                         <input type="checkbox"
                                                id="field_edit_{{ $data['field'] }}"
                                                name="field_edit_{{ $data['field'] }}" @if(isset($dataRow->edit) && $dataRow->edit){{ 'checked="checked"' }}@elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->edit)){{ 'checked="checked"' }}@endif>
-                                        <label for="field_edit_{{ $data['field'] }}">Edit</label><br/>
+                                        <label for="field_edit_{{ $data['field'] }}">E编辑页</label><br/>
                                         <input type="checkbox"
                                                id="field_add_{{ $data['field'] }}"
                                                name="field_add_{{ $data['field'] }}" @if(isset($dataRow->add) && $dataRow->add){{ 'checked="checked"' }}@elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'created_at')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->add)){{ 'checked="checked"' }}@endif>
-                                            <label for="field_add_{{ $data['field'] }}">Add</label><br/>
+                                            <label for="field_add_{{ $data['field'] }}">A新建页</label><br/>
                                         <input type="checkbox"
                                                id="field_delete_{{ $data['field'] }}"
                                                name="field_delete_{{ $data['field'] }}" @if(isset($dataRow->delete) && $dataRow->delete){{ 'checked="checked"' }}@elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->delete)){{ 'checked="checked"' }}@endif>
-                                                <label for="field_delete_{{ $data['field'] }}">Delete</label><br/>
+                                                <label for="field_delete_{{ $data['field'] }}">D删除</label><br/>
                                     </td>
                                     <input type="hidden" name="field_{{ $data['field'] }}" value="{{ $data['field'] }}">
                                     <td>
@@ -130,25 +130,25 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{ ucfirst($table) }} BREAD info</h3>
+                            <h3 class="panel-title">{{ ucfirst($table) }} BREAD 信息</h3>
                         </div>
 
                         <div class="panel-body">
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="name">Table Name</label>
+                                    <label for="name">表名</label>
                                     <input type="text" class="form-control" readonly name="name" placeholder="Name"
                                            value="@if(isset($dataType->name)){{ $dataType->name }}@else{{ $table }}@endif">
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="email">URL Slug (must be unique)</label>
+                                    <label for="email">URL标签 (不重复)</label>
                                     <input type="text" class="form-control" name="slug" placeholder="URL slug (ex. posts)"
                                            value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="email">Icon (optional) Use a <a
+                                    <label for="email">图标 (可选) Use a <a
                                                 href="{{ config('voyager.assets_path') . '/fonts/voyager/icons-reference.html' }}"
                                                 target="_blank">Voyager Font Class</a></label>
                                     <input type="text" class="form-control" name="icon"
@@ -158,13 +158,13 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="email">Display Name (Singular)</label>
+                                    <label for="email">面包屑名称 (Singular)</label>
                                     <input type="text" class="form-control" name="display_name_singular"
                                            placeholder="Display Name (Singular)"
                                            value="@if(isset($dataType->display_name_singular)){{ $dataType->display_name_singular }}@else{{ $display_name }}@endif">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="email">Display Name (Plural)</label>
+                                    <label for="email">显示名称 (Plural)</label>
                                     <input type="text" class="form-control" name="display_name_plural"
                                            placeholder="Display Name (Plural)"
                                            value="@if(isset($dataType->display_name_plural)){{ $dataType->display_name_plural }}@else{{ $display_name_plural }}@endif">
@@ -172,7 +172,7 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="email">Model Name</label>
+                                    <label for="email">Model名称</label>
                                     <span class="glyphicon glyphicon-question-sign"
                                         aria-hidden="true"
                                         data-toggle="tooltip"
@@ -182,7 +182,7 @@
                                            value="@if(isset($dataType->model_name)){{ $dataType->model_name }}@else{{ $model_name }}@endif">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="email">Controller Name</label>
+                                    <label for="email">Controller名称</label>
                                     <span class="glyphicon glyphicon-question-sign"
                                         aria-hidden="true"
                                         data-toggle="tooltip"
@@ -194,26 +194,26 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="generate_permissions">Generate Permissions</label><br>
+                                    <label for="generate_permissions">生成权限数据</label><br>
                                     <?php $checked = (isset($dataType->generate_permissions) && $dataType->generate_permissions == 1) ? true : (isset($generate_permissions) && $generate_permissions) ? true : false; ?>
                                     <input type="checkbox" name="generate_permissions" class="toggleswitch"
                                            @if($checked) checked @endif>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="server_side">Server-side Pagination</label><br>
+                                    <label for="server_side">列表采用服务器分页</label><br>
                                     <?php $checked = (isset($dataType->server_side) && $dataType->server_side == 1) ? true : (isset($server_side) && $server_side) ? true : false; ?>
                                     <input type="checkbox" name="server_side" class="toggleswitch"
                                            @if($checked) checked @endif>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">描述</label>
                                 <textarea class="form-control" name="description"
                                           placeholder="Description">@if(isset($dataType->description)){{ $dataType->description }}@endif</textarea>
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">保存</button>
                             </div>
                         </div><!-- .panel-body -->
 

@@ -1,14 +1,14 @@
 @extends('voyager::master')
 
-@section('page_title','View '.$dataType->display_name_singular)
+@section('page_title','查看 '.$dataType->display_name_singular)
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> Viewing {{ ucfirst($dataType->display_name_singular) }} &nbsp;
+        <i class="{{ $dataType->icon }}"></i> 查看{{ ucfirst($dataType->display_name_singular) }} &nbsp;
 
         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $dataTypeContent->getKey()) }}" class="btn btn-info">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;
-            Edit
+            编辑
         </a>
     </h1>
     @include('voyager::multilingual.language-selector')

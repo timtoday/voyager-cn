@@ -6,7 +6,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}
     </h1>
 @stop
 
@@ -18,7 +18,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'Add New' }}@endif {{ $dataType->display_name_singular }}</h3>
+                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ '编辑' }}@else{{ '新建' }}@endif{{ $dataType->display_name_singular }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -46,32 +46,32 @@
                             @endif
 
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">姓名</label>
                                 <input type="text" class="form-control" name="name"
-                                    placeholder="Name" id="name"
+                                    placeholder="姓名" id="name"
                                     value="@if(isset($dataTypeContent->name)){{ old('name', $dataTypeContent->name) }}@else{{old('name')}}@endif">
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Email</label>
+                                <label for="name">邮件</label>
                                 <input type="text" class="form-control" name="email"
-                                       placeholder="Email" id="email"
+                                       placeholder="邮件" id="email"
                                        value="@if(isset($dataTypeContent->email)){{ old('email', $dataTypeContent->email) }}@else{{old('email')}}@endif">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">密码</label>
                                 @if(isset($dataTypeContent->password))
                                     <br>
-                                    <small>Leave empty to keep the same</small>
+                                    <small>空白表示不修改</small>
                                 @endif
                                 <input type="password" class="form-control" name="password"
-                                       placeholder="Password" id="password"
+                                       placeholder="密码" id="password"
                                        value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Avatar</label>
+                                <label for="password">头像</label>
                                 @if(isset($dataTypeContent->avatar))
                                     <img src="{{ Voyager::image( $dataTypeContent->avatar ) }}"
                                          style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="role">User Role</label>
+                                <label for="role">角色</label>
                                 <select name="role_id" id="role" class="form-control">
                                     <?php $roles = TCG\Voyager\Models\Role::all(); ?>
                                     @foreach($roles as $role)
@@ -94,7 +94,7 @@
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
                         </div>
                     </form>
 
