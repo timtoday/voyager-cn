@@ -84,7 +84,7 @@ class InstallCommand extends Command
         $this->seed('VoyagerDatabaseSeeder');
 
         if ($this->option('with-dummy')) {
-            $this->seed('VoyagerDummyDatabaseSeeder');
+            //$this->seed('VoyagerDummyDatabaseSeeder');
         }
 
         $this->info('Adding the storage symlink to your public folder');

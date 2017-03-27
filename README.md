@@ -89,7 +89,7 @@ APP_URL=localhost:8000
 包含测试数据安装
 
 ```bash
-php artisan voyager:install --with-dummy
+php artisan voyager:install
 ```
 
 好啦，启动Laravel服务器：
@@ -102,7 +102,7 @@ php artisan voyager:install --with-dummy
 >**email:** `admin@admin.com`   
 >**password:** `password`
 
-如果是无测试数据安装，可以命令方式创建管理员
+可以通过命令方式创建管理员
 ```bash
 php artisan voyager:admin your@email.com
 ```
