@@ -14,8 +14,9 @@ class TranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->pagesTranslations();
-        $this->menusTranslations();
+        
+        //$this->pagesTranslations();
+        //$this->menusTranslations();
     }
 
     /**
