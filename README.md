@@ -16,7 +16,6 @@
 
 ## 开始安装轮子
 ```bash
-    cd laravel
     composer require timtoday/voyager-cn
 ```
 
@@ -56,12 +55,13 @@ APP_URL=localhost:8000
 ```
 
  
-不含测试数据的安装
+ 
+包含测试数据安装
 
 ```bash
-php artisan voyager:install
+php artisan voyager:install --with-dummy
 ```
- 
+
 好啦，启动Laravel服务器：
 ```bash
     php artisan serve
