@@ -5,6 +5,36 @@
 
 
 <hr>
+## 放图
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111333@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111723@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111914@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111925@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111944@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112026@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112038@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112122@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112154@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112205@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112236@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112256@2x.png)
+
+![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-112428@2x.png)
+ 
+
+
 
 
 # 安装方式：
