@@ -9,8 +9,6 @@
 
 ![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111333@2x.png)
 
-![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111723@2x.png)
-
 ![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111914@2x.png)
 
 ![截图](https://raw.githubusercontent.com/timtoday/voyager-cn/master/Screenshot/WX20170327-111925@2x.png)
